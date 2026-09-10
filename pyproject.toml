@@ -1,0 +1,25 @@
+[project]
+name = "llm-prompt-injection-tester"
+version = "0.1.0"
+description = "Structured prompt injection testing harness for LLM APIs, mapped to OWASP LLM Top 10."
+authors = [{name = "Umar Murtaza", email = "umarmurtaza605050@gmail.com"}]
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+dependencies = [
+    "anthropic>=0.39.0",
+    "openai>=1.50.0",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.0.0",
+    "rich>=13.0.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0.0", "ruff>=0.1.0"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
