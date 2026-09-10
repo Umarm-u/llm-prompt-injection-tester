@@ -46,7 +46,7 @@ More categories on the roadmap: data exfiltration, tool misuse, multi-turn attac
 Requires Python 3.10+.
 
 ```bash
-git clone https://github.com/umar-murtaza/llm-prompt-injection-tester.git
+git clone https://github.com/Umarm-u/llm-prompt-injection-tester.git
 cd llm-prompt-injection-tester
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
@@ -112,6 +112,7 @@ This tool exists to help defenders test their own LLM deployments. Do not run it
 
 **Umar Murtaza** — BS Cybersecurity, FAST-NUCES Islamabad. Working at the intersection of security and AI. Open to remote AppSec and AI security roles.
 
+- GitHub: [github.com/Umarm-u](https://github.com/Umarm-u)
 - LinkedIn: [linkedin.com/in/umar-murtazam](https://linkedin.com/in/umar-murtazam)
 - Email: umarmurtaza605050@gmail.com
 
