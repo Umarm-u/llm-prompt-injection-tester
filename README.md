@@ -55,6 +55,15 @@ cp .env.example .env
 # Fill in your API keys in .env
 ```
 
+### Configuring providers
+
+The example script (`examples/run_example.py`) runs against OpenAI's `gpt-4o-mini` by default. Both `AnthropicProvider` and `OpenAIProvider` are shipped in the package — enabling Anthropic requires two changes:
+
+1. Add `ANTHROPIC_API_KEY=your_key_here` to `.env`.
+2. In `examples/run_example.py`, uncomment the Anthropic import line and the `AnthropicProvider(...)` line inside the `providers` list.
+
+The tool is multi-provider by design: any subclass of `BaseProvider` can be added to the list.
+
 ## Usage
 
 Run the full attack suite against Claude and GPT:
