@@ -133,7 +133,7 @@ This tool exists to help defenders test their own LLM deployments. Do not run it
 
 **Umar Murtaza** — BS Cybersecurity, FAST-NUCES Islamabad. Working at the intersection of security and AI. Open to remote AppSec and AI security roles.
 
-- GitHub: [github.com/Umarm-u](https://github.com/Umarm-u)
+- GitHub: [github.com/UmarMurtazam](https://github.com/UmarMurtazam)
 - LinkedIn: [linkedin.com/in/umar-murtazam](https://linkedin.com/in/umar-murtazam)
 - Email: umarmurtaza605050@gmail.com
 

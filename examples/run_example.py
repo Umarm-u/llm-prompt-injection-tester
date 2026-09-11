@@ -22,8 +22,8 @@ load_dotenv()
 
 def main() -> None:
     providers = [
-        GroqProvider(model="llama-3.3-70b-versatile"),
-        GroqProvider(model="llama-3.1-8b-instant"),
+        GroqProvider(model="openai/gpt-oss-120b"),
+        GroqProvider(model="openai/gpt-oss-20b"),
         # OpenAIProvider(model="gpt-4o-mini"),  # re-enable when OPENAI_API_KEY is set
         # AnthropicProvider(model="claude-sonnet-4-5"),  # re-enable when ANTHROPIC_API_KEY is set
     ]
@@ -33,7 +33,7 @@ def main() -> None:
 
     reporter = Reporter()
     report_path = reporter.generate(results, output_path="reports/latest.md")
-    print(f"\n✅ Report written to: {report_path}")
+    print(f"\n[DONE] Report written to: {report_path}")
 
 
 if __name__ == "__main__":

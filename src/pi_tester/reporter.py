@@ -83,5 +83,5 @@ class Reporter:
             lines.append(f"**Response:**\n```\n{response_preview}\n```\n")
             lines.append("---\n")
 
-        output_path.write_text("\n".join(lines))
+        output_path.write_text("\n".join(lines), encoding="utf-8")
         return output_path
