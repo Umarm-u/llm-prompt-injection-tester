@@ -15,7 +15,7 @@ Every application that puts an LLM behind a system prompt inherits a new attack 
 ## What it does
 
 - **Structured attack library** — direct injection, indirect injection (via retrieved documents / tool output), and jailbreaks. All defined as JSON payloads so anyone can extend the library without touching Python.
-- **Multi-provider** — supports Anthropic Claude and OpenAI. New providers implement one interface.
+- **Multi-provider** — supports Groq (free-tier hosted Llama models), Anthropic Claude, and OpenAI. New providers implement one interface.
 - **Deterministic evaluation** — substring and regex-based success indicators. LLM-graded evaluation on the roadmap.
 - **OWASP LLM Top 10 mapping** — every payload is tagged with the OWASP category it exercises.
 - **Markdown reporting** — the tool ships a report you can hand to an engineering lead, not just a terminal log.
@@ -30,6 +30,16 @@ flowchart LR
     D --> E[Reporter<br/>Markdown output]
     E --> F[reports/latest.md]
 ```
+
+## Providers included
+
+| Provider | Auth env var | Default model | Cost |
+|---|---|---|---|
+| Groq | `GROQ_API_KEY` | `llama-3.3-70b-versatile` | Free tier |
+| OpenAI | `OPENAI_API_KEY` | `gpt-4o-mini` | Paid |
+| Anthropic | `ANTHROPIC_API_KEY` | `claude-sonnet-4-5` | Paid |
+
+The default example script runs against two Groq-hosted models (Llama 3.3 70B and Llama 3.1 8B) so the resulting report shows a cross-model vulnerability delta out of the box.
 
 ## Attack categories included
 
@@ -57,10 +67,12 @@ cp .env.example .env
 
 ### Configuring providers
 
-The example script (`examples/run_example.py`) runs against OpenAI's `gpt-4o-mini` by default. Both `AnthropicProvider` and `OpenAIProvider` are shipped in the package — enabling Anthropic requires two changes:
+The example script (`examples/run_example.py`) runs against two Groq-hosted models by default: Llama 3.3 70B and Llama 3.1 8B. Both `GroqProvider`, `OpenAIProvider`, and `AnthropicProvider` are shipped in the package.
 
-1. Add `ANTHROPIC_API_KEY=your_key_here` to `.env`.
-2. In `examples/run_example.py`, uncomment the Anthropic import line and the `AnthropicProvider(...)` line inside the `providers` list.
+To use OpenAI or Anthropic instead of (or alongside) Groq:
+
+1. Add the relevant API key to `.env` (`OPENAI_API_KEY` or `ANTHROPIC_API_KEY`).
+2. In `examples/run_example.py`, uncomment the corresponding import line and the provider instantiation inside the `providers` list.
 
 The tool is multi-provider by design: any subclass of `BaseProvider` can be added to the list.
 

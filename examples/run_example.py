@@ -1,25 +1,30 @@
-"""End-to-end example: run all attacks against OpenAI's gpt-4o-mini, generate a report.
+"""End-to-end example: run all attacks against two Groq-hosted models, generate a report.
 
-Note: The Anthropic provider is intentionally disabled here because the current owner
-does not have an Anthropic API key configured. To re-enable, add ANTHROPIC_API_KEY to
-your .env file and uncomment the AnthropicProvider import and instantiation below.
+Runs against Llama 3.3 70B (larger, better-aligned) and Llama 3.1 8B (smaller, weaker
+guardrails) to produce a cross-model vulnerability comparison. Groq offers a generous
+free tier that supports this workload at zero cost.
+
+To re-enable other providers, add the relevant API key to .env and uncomment the
+corresponding lines below.
 """
 
 from dotenv import load_dotenv
 
 from pi_tester.attacks import AttackLoader
-from pi_tester.providers import OpenAIProvider
+from pi_tester.providers import GroqProvider
 from pi_tester.reporter import Reporter
 from pi_tester.runner import Runner
 
-# from pi_tester.providers import AnthropicProvider  # re-enable when ANTHROPIC_API_KEY is set
+# from pi_tester.providers import AnthropicProvider, OpenAIProvider  # re-enable when keys are set
 
 load_dotenv()
 
 
 def main() -> None:
     providers = [
-        OpenAIProvider(model="gpt-4o-mini"),
+        GroqProvider(model="llama-3.3-70b-versatile"),
+        GroqProvider(model="llama-3.1-8b-instant"),
+        # OpenAIProvider(model="gpt-4o-mini"),  # re-enable when OPENAI_API_KEY is set
         # AnthropicProvider(model="claude-sonnet-4-5"),  # re-enable when ANTHROPIC_API_KEY is set
     ]
     loader = AttackLoader(payload_dir="attack_payloads")
