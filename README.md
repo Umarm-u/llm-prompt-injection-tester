@@ -56,7 +56,7 @@ More categories on the roadmap: data exfiltration, tool misuse, multi-turn attac
 Requires Python 3.10+.
 
 ```bash
-git clone https://github.com/Umarm-u/llm-prompt-injection-tester.git
+git clone https://github.com/UmarMurtazam/llm-prompt-injection-tester.git
 cd llm-prompt-injection-tester
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
